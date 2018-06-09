@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	mcr "github.com/ChrisCompton/hcris-tools"
+	mcr "github.com/ComptonMSHI/hcris-tools"
 )
 
 func main() {
