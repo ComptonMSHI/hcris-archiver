@@ -1,0 +1,60 @@
+source:
+    # Whether to perform a download. true/false
+    download: false
+
+    # Directory for downloaded files. (Relative OK)
+    directory: "Data"
+
+    # When set, this will fix the download date to a specific folder in the Data directory.
+    # If download is set to true, this will update the directory with any missing files.
+    fixedDate: "" #"2017-12-29"
+
+    # Root URL
+    url: "https://www.cms.gov"
+
+    # Path to page containing the Cost Reports by Fiscal Year List
+    path: "/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/Cost-Reports/Cost-Reports-by-Fiscal-Year.html"
+
+    # Look for all links associated with the Hospital Facility Type (Will be a pattern match on the source of the url)
+    list: "Cost-Reports-by-Fiscal-Year-Items/HOSP"
+
+    # This is the tag attribute to apple the tagMatch pattern to.
+    tagAttr: "href"
+
+    # This looks for tagAttr that have this type.
+    tagMatch: "zip"
+
+store:
+    # This will extract all contents of the zip files to the store.
+    extract: true
+
+    # This directory will be used to write any file output from transformation actions. (Relative OK)
+    directory: "Output"
+
+    # When downloading, apply the prefix to file names.
+    prefix: ""
+
+    # This is the extension to force when saving files
+    ext: ".zip"
+
+    # This is the name of the sqlite database when the output is database.
+    file: "./mcr.sqlite"
+
+    # To help efficiency in inserting records, this queue will cause a bulk insert when the maxqueue is reached
+    maxqueue: 1000000
+
+settings:
+    # Output debug messages. true/false
+    debug: true
+
+    # Output all messages possible. true/false
+    verbose: false
+
+    # Information will be logged to this html file for recordkeeping and reference.
+    logfile: "log.html"
+    
+    # Ouput options:
+    # EXPERIMENTAL: database - Generate SQLite database.
+    # EXPERIMENTAL: sql - Generate generic SQL files of content with INSERT statements for all data.
+    # file - Prepare files for import via BULK IMPORT statements in SQL Server.
+    output: "file"
