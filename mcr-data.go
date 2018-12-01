@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	mcr "github.com/ComptonMSHI/hcris-tools"
+	mcr "github.com/dcinformatics/datatools"
 )
 
 func main() {
@@ -18,15 +18,15 @@ func main() {
 
 	mcr.Debug(fmt.Sprintf("Starting with output to %s.", mcr.AppConfig.Settings.Output))
 
-	if mcr.AppConfig.Source.Download {
+	if mcr.AppConfig.Input.Download {
 		files := mcr.DownloadFiles(
-			mcr.AppConfig.Source.Url,
-			mcr.AppConfig.Source.Path,
-			mcr.AppConfig.Source.TagAttr,
-			mcr.AppConfig.Source.List,
-			mcr.AppConfig.Source.TagMatch,
-			mcr.AppConfig.Store.Prefix,
-			mcr.AppConfig.Store.Ext)
+			mcr.AppConfig.Input.Url,
+			mcr.AppConfig.Input.Path,
+			mcr.AppConfig.Input.TagAttr,
+			mcr.AppConfig.Input.List,
+			mcr.AppConfig.Input.TagMatch,
+			mcr.AppConfig.Output.Prefix,
+			mcr.AppConfig.Output.Ext)
 
 		mcr.Debug(strings.Join(files, ", "))
 
@@ -40,8 +40,8 @@ func main() {
 		mcr.Debug("Skipping Download per Config")
 	}
 
-	if mcr.AppConfig.Store.Extract {
-		fileList, err := ioutil.ReadDir(mcr.GetDataFolder())
+	if mcr.AppConfig.Output.Extract {
+		fileList, err := ioutil.ReadDir(mcr.GetInputFolder())
 		mcr.Check(err)
 
 		rx := regexp.MustCompile("(?i)zip$")
@@ -52,7 +52,7 @@ func main() {
 
 			if rx.MatchString(file.Name()) {
 				mcr.Debug(fmt.Sprintf("Extracting and preparing CSV files from %s into the store directory. (%s)", file.Name(), mcr.GetOutputFolder()))
-				mcr.ExtractToFolder(mcr.GetDataFolder()+"/"+file.Name(), mcr.GetOutputFolder())
+				mcr.ExtractToFolder(mcr.GetInputFolder()+"/"+file.Name(), mcr.GetOutputFolder())
 			}
 		}
 

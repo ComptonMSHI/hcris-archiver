@@ -18,7 +18,7 @@ cp "${BUILDROOT}/config.yaml.template" "${TARGET}/mac-lin/config.yaml"
 echo "Setting up packages."
 cd "${SOURCE}"
 
-go get github.com/ComptonMSHI/hcris-tools
+go get github.com/dcinformatics/datatools
 go get github.com/mattn/go-sqlite3
 go get github.com/yhat/scrape
 go get golang.org/x/net/html
