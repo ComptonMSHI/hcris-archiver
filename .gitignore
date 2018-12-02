@@ -1,3 +1,5 @@
 src
 pkg
 .DS_Store
+dist/mac-lin/Input
+dist/mac-lin/Output

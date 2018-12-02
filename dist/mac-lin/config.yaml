@@ -1,4 +1,13 @@
-source:
+settings:
+    debug: true
+    verbose: false
+    fixedDate: "" #"2017-12-29"
+    outputDir: "Output"
+    inputDir: "Input"
+    logName: "log.html"
+    output: "file"
+
+input:
     # Whether to perform a download. true/false
     download: false
 
@@ -24,7 +33,7 @@ source:
     # This looks for tagAttr that have this type.
     tagMatch: "zip"
 
-store:
+output:
     # This will extract all contents of the zip files to the store.
     extract: true
 
@@ -43,18 +52,3 @@ store:
     # To help efficiency in inserting records, this queue will cause a bulk insert when the maxqueue is reached
     maxqueue: 1000000
 
-settings:
-    # Output debug messages. true/false
-    debug: true
-
-    # Output all messages possible. true/false
-    verbose: false
-
-    # Information will be logged to this html file for recordkeeping and reference.
-    logfile: "log.html"
-    
-    # Ouput options:
-    # EXPERIMENTAL: database - Generate SQLite database.
-    # EXPERIMENTAL: sql - Generate generic SQL files of content with INSERT statements for all data.
-    # file - Prepare files for import via BULK IMPORT statements in SQL Server.
-    output: "file"

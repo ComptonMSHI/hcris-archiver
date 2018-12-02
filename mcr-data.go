@@ -56,7 +56,7 @@ func main() {
 			}
 		}
 
-		mcr.CheckExtractFiles()
+		mcr.CheckAndMoveExtractFiles()
 		mcr.Check(err)
 	}
 
