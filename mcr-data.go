@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"regexp"
 	"strings"
 
@@ -57,6 +58,9 @@ func main() {
 		}
 
 		mcr.CheckAndMoveExtractFiles()
+		mcr.Check(err)
+
+		os.Remove(mcr.GetOutputFolder())
 		mcr.Check(err)
 	}
 
